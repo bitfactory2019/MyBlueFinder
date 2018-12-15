@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "localhost",
+    "username": "root",
+    "password": "root",
+    "dbname": "mybluefinder"
+  },
+  "default_lang": "it",
+  "routing": {
+    "seaport": "s/%s"
+  }
+}

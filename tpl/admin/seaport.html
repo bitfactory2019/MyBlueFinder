@@ -1,0 +1,14 @@
+{% if seaport %}
+  <h2>Modifica il porto</h2>
+{% else %}
+  <h2>Aggiungi un porto</h2>
+{% endif %}
+
+{{ dump(users) }}
+
+<form method="post" action="{{ glob.root.admin.url }}action/seaport/save.php">
+  <input type="hidden" name="id" value="{{ seaport.id }}">
+  <input type="text" name="name" value="{{ seaport.name }}" placeholder="Nome">
+
+  <input type="submit" value="Salva">
+</form>

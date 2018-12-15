@@ -1,0 +1,12 @@
+
+<ul>
+  {% for seaport in seaports %}
+    <li><a href="{{ glob.root.admin.url }}seaport.php?id={{ seaport.id }}">{{ seaport.name }}</a></li>
+  {% else %}
+    <li>Nessun porto presente</li>
+  {% endfor %}
+</ul>
+
+<a href="{{ glob.root.admin.url }}seaport.php">Aggiungi porto</a>
+
+<a href="{{ glob.root.admin.url }}">Torna alla home</a>
