@@ -8,12 +8,12 @@
           <h5><span>01</span> {{ 'Che tipo di barca?' | tr }}</h5>
           <div class="row">
             <div class="f-item one-half">
-              <input type="radio" name="radio" value="motor" />
-              <label for="hotel">{{ 'A motore' | tr }}</label>
+              <input id="boat-type-motor" type="radio" name="boat-type" value="motor" />
+              <label for="boat-type-motor">{{ 'A motore' | tr }}</label>
             </div>
             <div class="f-item one-half">
-              <input type="radio" name="radio" value="sail" />
-              <label for="self_catering">{{ 'A vela' | tr }}</label>
+              <input id="boat-type-sail" type="radio" name="boat-type" value="sail" />
+              <label for="boat-type-sail">{{ 'A vela' | tr }}</label>
             </div>
           </div>
         </div>
