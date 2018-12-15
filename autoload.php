@@ -6,15 +6,15 @@ function _load($dir) {
             continue;
           }
 
-          if (filetype($dir."/".$file) === "dir") {
-            _load($dir."/".$file);
-          }
-
           if (\substr($file, -3) !== "php") {
             continue;
           }
 
           require_once($dir."/".$file);
+
+          if (filetype($dir."/".$file) === "dir") {
+            _load($dir."/".$file);
+          }
       }
 
       closedir($directory_handle);
@@ -33,7 +33,6 @@ $twig = new \Twig_Environment(
 );
 
 _load(__DIR__."/Core");
-
 $base_path = "mybluefinder";
 
 $config = \Core\Utils::loadConf();
