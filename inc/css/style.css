@@ -415,7 +415,7 @@ aside article .price em 	{float:right;font-size:16px;}
 .flights .details .price,
 .cars .details .price 		{border-bottom:1px solid #ccc;margin:0 0 15px;}
 
-.destinations article h4 				{font:700 15px 'Open Sans', Helvetica, Arial, sans-serif !important;color:#3f3f3f !important;padding:4px 90px 15px 0 !important;margin:0 !important;border:none !important;}
+.destinations article h4 				{font:700 15px 'Open Sans', Helvetica, Arial, sans-serif !important;color:#3f3f3f !important;padding:4px 110px 15px 0 !important;margin:0 !important;border:none !important;}
 .destinations article .price			{border:none;padding:0;text-shadow:0 1px 0 rgba(255, 255, 255, 0.2);}
 .destinations article .price em 	{float:none;font-size:20px;}
 .destinations article .count 		{color: #858585;display: inline-block;width: 50%;white-space:nowrap;font-size:.965em;}
