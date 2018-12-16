@@ -1,149 +1,111 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for Win32 (AMD64)
 --
--- Host: 127.0.0.1
--- Creato il: Dic 15, 2018 alle 17:29
--- Versione del server: 10.1.37-MariaDB
--- Versione PHP: 7.3.0
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: mybluefinder
+-- ------------------------------------------------------
+-- Server version	10.1.37-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `mybluefinder`
---
-CREATE DATABASE IF NOT EXISTS `mybluefinder` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `mybluefinder`;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `availabilities`
---
--- Creazione: Dic 15, 2018 alle 16:22
+-- Table structure for table `availabilities`
 --
 
 DROP TABLE IF EXISTS `availabilities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `availabilities` (
-  `id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
-  `availability` int(2) NOT NULL
+  `availability` int(2) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Svuota la tabella prima dell'inserimento `availabilities`
+-- Dumping data for table `availabilities`
 --
 
-TRUNCATE TABLE `availabilities`;
--- --------------------------------------------------------
+LOCK TABLES `availabilities` WRITE;
+/*!40000 ALTER TABLE `availabilities` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `availabilities` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
 
 --
--- Struttura della tabella `seaports`
---
--- Creazione: Dic 15, 2018 alle 16:25
+-- Table structure for table `seaports`
 --
 
 DROP TABLE IF EXISTS `seaports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seaports` (
-  `id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `user_id` int(4) NOT NULL,
   `name` varchar(255) NOT NULL,
   `geocode_lang` varchar(255) NOT NULL,
-  `geocode_long` varchar(255) NOT NULL
+  `geocode_long` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `seaports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Svuota la tabella prima dell'inserimento `seaports`
+-- Dumping data for table `seaports`
 --
 
-TRUNCATE TABLE `seaports`;
--- --------------------------------------------------------
+LOCK TABLES `seaports` WRITE;
+/*!40000 ALTER TABLE `seaports` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `seaports` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
 
 --
--- Struttura della tabella `users`
---
--- Creazione: Dic 15, 2018 alle 16:23
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `admin` enum('Y','N') NOT NULL DEFAULT 'N'
+  `admin` enum('Y','N') NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Svuota la tabella prima dell'inserimento `users`
+-- Dumping data for table `users`
 --
 
-TRUNCATE TABLE `users`;
---
--- Indici per le tabelle scaricate
---
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indici per le tabelle `availabilities`
---
-ALTER TABLE `availabilities`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `seaports`
---
-ALTER TABLE `seaports`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indici per le tabelle `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
---
-
---
--- AUTO_INCREMENT per la tabella `availabilities`
---
-ALTER TABLE `availabilities`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `seaports`
---
-ALTER TABLE `seaports`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `seaports`
---
-ALTER TABLE `seaports`
-  ADD CONSTRAINT `seaports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-12-16 11:49:46
