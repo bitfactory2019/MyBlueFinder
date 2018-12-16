@@ -3,7 +3,7 @@
   <div class="wrap">
     <!--logo-->
     <div class="logo">
-      <a href="index.html" title="My Blue Finder">
+      <a href="index" title="My Blue Finder">
         <img src="inc/images/txt/logo-my-blue-finder-04.png" alt="My Blue Finder" />
       </a>
     </div>
