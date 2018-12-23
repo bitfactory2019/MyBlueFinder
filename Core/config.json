@@ -2,7 +2,7 @@
   "db": {
     "host": "localhost",
     "username": "root",
-    "password": "root",
+    "password": "",
     "dbname": "mybluefinder"
   },
   "default_lang": "it",
