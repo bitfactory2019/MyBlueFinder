@@ -15,12 +15,8 @@ class Template {
     $twig->addFilter(new \Twig_SimpleFilter('tr', 'Core\TwigFilters::tr'));
     $twig->addFilter(new \Twig_SimpleFilter('lang', 'Core\TwigFilters::lang'));
 
-    $twig->addFunction(new \Twig_SimpleFunction('get_menu', 'Core\TwigFunctions::getMenu'));
-    $twig->addFunction(new \Twig_SimpleFunction('get_html', 'Core\TwigFunctions::getHtml'));
-    $twig->addFunction(new \Twig_SimpleFunction('get_category', 'Core\TwigFunctions::getCategory'));
-    $twig->addFunction(new \Twig_SimpleFunction('get_products', 'Core\TwigFunctions::getProducts'));
-    $twig->addFunction(new \Twig_SimpleFunction('get_regions', 'Core\TwigFunctions::getRegions'));
     $twig->addFunction(new \Twig_SimpleFunction('var_dump', 'Core\TwigFunctions::varDump'));
+    $twig->addFunction(new \Twig_SimpleFunction('marinas', 'Core\TwigFunctions::getMarinas'));
 
     $glob = [
       "conf" => Utils::loadConf(),

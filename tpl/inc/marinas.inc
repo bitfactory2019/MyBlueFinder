@@ -1,53 +1,5 @@
-{% set marinas = [
-  {
-    id: 1,
-    name: 'Sud Cantieri' | tr,
-    description: 'Boatyard in Naples' | tr,
-    image: 'inc/images/marinas/sud-cantieri.jpg',
-    services: [
-      { type: 'hotel', description: 'Servizio 1' | tr },
-      { type: 'flight', description: 'Servizio 2' | tr },
-      { type: 'hotel', description: 'Servizio 3' | tr },
-      { type: 'flight', description: 'Servizio 4' | tr }
-    ]
-  },
-  {
-    id: 2,
-    name: 'P&O Marinas' | tr,
-    description: 'World class superyacht marinas' | tr,
-    image: 'inc/images/marinas/p-o-marinas.jpg',
-    services: [
-      { type: 'hotel', description: 'Servizio 1' | tr },
-      { type: 'flight', description: 'Servizio 2' | tr },
-      { type: 'hotel', description: 'Servizio 3' | tr },
-      { type: 'flight', description: 'Servizio 4' | tr }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Marina di Villasimius S.r.l.' | tr,
-    description: 'Superyacht marina in Sardinia, Italy' | tr,
-    image: 'inc/images/marinas/marina-villasimius.jpg',
-    services: [
-      { type: 'hotel', description: 'Servizio 1' | tr },
-      { type: 'flight', description: 'Servizio 2' | tr },
-      { type: 'hotel', description: 'Servizio 3' | tr },
-      { type: 'flight', description: 'Servizio 4' | tr }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Port of Nice' | tr,
-    description: 'A key hub on the French Riviera' | tr,
-    image: 'inc/images/marinas/port-of-nice.jpg',
-    services: [
-      { type: 'hotel', description: 'Servizio 1' | tr },
-      { type: 'flight', description: 'Servizio 2' | tr },
-      { type: 'hotel', description: 'Servizio 3' | tr },
-      { type: 'flight', description: 'Servizio 4' | tr }
-    ]
-  }
-] %}
+{% set marinas = marinas() %}
+
 <header class="s-title">
   <h2>{{ 'Top marine' | tr }}</h2>
 </header>
@@ -58,7 +10,7 @@
       <article class="one-fourth">
         <figure>
           <a href="marinas/{{ marina.id }}" title="{{ marina.name }} - {{ marina.description }}">
-            <img src="{{ marina.image }}" alt="{{ marina.name }} - {{ marina.description }}" />
+            <img src="{{ marina.files[0].path }}" alt="{{ marina.name }} - {{ marina.description }}" />
           </a>
         </figure>
         <div class="details">
