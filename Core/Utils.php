@@ -13,9 +13,19 @@ class Utils {
     return self::loadConf()["default_lang"];
   }
 
-  public static function loadLang()
+  public static function loadLang($code)
   {
-    return self::_load_json("langs/".$_SESSION["lang"]);
+    return \Core\DB\Query\Select::create(\Core\DB::instance())
+      ->setFields(["*"])
+      ->addTable("langs")
+      ->addClauseEqual("code", $code)
+      ->query()
+      ->fetch();
+  }
+
+  public static function loadTranslation()
+  {
+    return self::_load_json("langs/".$_SESSION["lang"]["code"]);
   }
 
   private static function _load_json($filename)

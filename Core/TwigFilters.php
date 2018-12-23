@@ -8,7 +8,7 @@ class TwigFilters
 {
   public static function tr($value)
   {
-    $translations = Utils::loadLang();
+    $translations = Utils::loadTranslation();
     $default_lang = Utils::getDefaultLang();
 
     if ($_SESSION["lang"] == $default_lang) {

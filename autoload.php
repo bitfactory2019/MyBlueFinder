@@ -44,17 +44,17 @@ $base_path = "mybluefinder";
 $config = \Core\Utils::loadConf();
 
 if (!empty($_GET["lang_code"])) {
-  $_SESSION["lang"] = $_GET["lang_code"];
+  $_SESSION["lang"] = \Core\Utils::loadLang($_GET["lang_code"]);
 }
 elseif (empty($_SESSION["lang"])) {
-  $_SESSION["lang"] = $config["default_lang"];
+  $_SESSION["lang"] = \Core\Utils::loadLang($config["default_lang"]);
 }
 
-if ($_SESSION["lang"] == $config["default_lang"]) {
-  $_SESSION["lang_suffix"] = "";
+if ($_SESSION["lang"]["code"] == $config["default_lang"]) {
+  $_SESSION["lang"]["suffix"] = "";
 }
 else {
-  $_SESSION["lang_suffix"] = "_".$_SESSION["lang"];
+  $_SESSION["lang"]["suffix"] = "_".$_SESSION["lang"]["code"];
 }
 
 define('__PATH_ROOT__', __DIR__."/");
