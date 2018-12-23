@@ -17,6 +17,11 @@ class Query {
     $this->clauses = [];
   }
 
+  public static function create(\Core\DB $instance)
+  {
+    return new self($instance);
+  }
+
   public function setFields($fields)
   {
     $this->fields = $fields;
