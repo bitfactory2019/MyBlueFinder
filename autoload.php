@@ -1,23 +1,29 @@
 <?php
 function _load($dir) {
   if ($directory_handle = opendir($dir)) {
-      while (($file = readdir($directory_handle)) !== false) {
-          if (($file == ".") || ($file == "..")) {
-            continue;
-          }
+    $dirs = [];
 
-          if (\substr($file, -3) !== "php") {
-            continue;
-          }
+    while (($file = readdir($directory_handle)) !== false) {
+        if (($file == ".") || ($file == "..")) {
+          continue;
+        }
 
+        if (filetype($dir."/".$file) === "dir") {
+          $dirs[] = $dir."/".$file;
+        }
+        else if (\substr($file, -4) !== ".php") {
+          continue;
+        }
+        else {
           require_once($dir."/".$file);
+        }
+    }
 
-          if (filetype($dir."/".$file) === "dir") {
-            _load($dir."/".$file);
-          }
-      }
+    foreach ($dirs as $dir) {
+      _load($dir);
+    }
 
-      closedir($directory_handle);
+    closedir($directory_handle);
   }
 }
 
